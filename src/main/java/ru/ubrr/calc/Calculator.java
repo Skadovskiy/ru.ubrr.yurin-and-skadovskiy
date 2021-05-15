@@ -43,43 +43,29 @@ public class Calculator {
         return calculate(arrayList).getValue();
     }
 
-    public static LiteralEntity calculate(List<LiteralEntity> literalEntity) {
+    public static LiteralEntity calculate(List<LiteralEntity> literalEntityList) {
         /* todo вычисление результата */
+        List<LiteralEntity> literalEntity = new ArrayList<LiteralEntity>(literalEntityList);
         List<LiteralEntity> brackets = new ArrayList<LiteralEntity>();
 
         if (literalEntity.size() <= 1)
             return literalEntity.get(0);
 
-
-        Pair pair = nextbrackets(literalEntity);
-        brackets.addAll(pair.getLiteralEntityList());
-
-//        if (brackets.size() == 3)
-//            return brackets.get(1);
-
+        brackets.addAll(nextbrackets(literalEntity));
 
         while (!brackets.isEmpty() && brackets.stream().filter((p) -> p.getType() == LiteralType.OPEN_BRACKET).count() > 0) {
-            //int first = literalEntity.indexOf(brackets.get(0)); ///replaceAll((brackets, ) -> {calculate(brackets)});
-            int first = pair.getId();
+            int first = literalEntity.indexOf(brackets.get(0));
 
             literalEntity.removeAll(brackets);
-
             literalEntity.add(first, calculate(brackets.subList(1, brackets.size() - 1)));
-            //literalEntity.add(first, calculate(brackets));
 
             brackets.clear();
-            pair = nextbrackets(literalEntity);
-            brackets.addAll(pair.getLiteralEntityList());
+            brackets.addAll(nextbrackets(literalEntity));
         }
         Deque<LiteralEntity> deque = new ArrayDeque<LiteralEntity>() {};
-        //stack.addAll(literalEntity);
         deque.addAll(literalEntity);
 
         while (deque.size() > 1) {
-
-            //2 + ((3 * 4) - 3) (3 * 4)
-            //2 + 12
-            //2,+,3,*,4 -->> 2,+,12
 
             LiteralEntity number1 = deque.poll();
             LiteralEntity operator1 = deque.poll();
@@ -97,31 +83,10 @@ public class Calculator {
 
         return deque.poll();
 
-        /*while (stack.size() > 1) {
-
-            //2 + ((3 * 4) - 3) (3 * 4)
-            //2 + 12
-            //2,+,3,*,4 -->> 2,+,12
-
-            LiteralEntity number1 = stack.pop();
-            LiteralEntity operator1 = stack.pop();
-            LiteralEntity number2 = stack.pop();
-
-            if (!stack.isEmpty() && priorityOperators.getPriority(operator1.getValue()) < priorityOperators.getPriority(stack.peek().getValue())) {
-                LiteralEntity operator2 = stack.pop();
-                LiteralEntity number3 = stack.pop();
-                stack.push(makeOperation(number2, number3, operator2));
-                stack.push(operator1);
-                stack.push(number1);
-            } else
-                stack.push(makeOperation(number1, number2, operator1));
-        }
-
-        return stack.pop();*/
     }
 
     public static LiteralEntity makeOperation(LiteralEntity first, LiteralEntity second, LiteralEntity operator) {
-        return new LiteralEntity(String.valueOf(switch (operator.getValue()) {
+        return new LiteralEntity(0, String.valueOf(switch (operator.getValue()) {
             case "+" -> Double.valueOf(first.getValue()) + Double.valueOf(second.getValue());
             case "-" -> Double.valueOf(first.getValue()) - Double.valueOf(second.getValue());
             case "*" -> Double.valueOf(first.getValue()) * Double.valueOf(second.getValue());
@@ -130,7 +95,7 @@ public class Calculator {
         }), LiteralType.NUMBERS);
     }
 
-    public static Pair nextbrackets(List<LiteralEntity> brackets) {
+    public static List<LiteralEntity> nextbrackets(List<LiteralEntity> brackets) {
         int openBracket = -1;
         int closeBracket = -1;
 
@@ -145,9 +110,10 @@ public class Calculator {
         }
 
         if (openBracket > -1 && closeBracket > -1)
-            return new Pair (openBracket, brackets.subList(openBracket, ++closeBracket));
+            return brackets.subList(openBracket, ++closeBracket);
 
-        return new Pair (openBracket, brackets);
+        return brackets;
     }
+
 
 }

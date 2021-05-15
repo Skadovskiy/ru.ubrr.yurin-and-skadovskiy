@@ -33,19 +33,19 @@ public class StringIterator implements Iterator<LiteralEntity> {
             currentIndex++;
 
             if (currentIndex == string.length())
-                return new LiteralEntity(result.toString(), NUMBERS);
+                return new LiteralEntity(currentIndex, result.toString(), NUMBERS);
 
             character = string.charAt(currentIndex);
         }
 
         if (result.length() != 0)
-            return new LiteralEntity(result.toString(), NUMBERS);
+            return new LiteralEntity(currentIndex, result.toString(), NUMBERS);
 
         currentIndex++;
         return switch (character) {
-            case '+', '-', '*', '/' -> new LiteralEntity(character.toString(), OPERATORS);
-            case '(' -> new LiteralEntity(character.toString(), OPEN_BRACKET);
-            case ')' -> new LiteralEntity(character.toString(), CLOSE_BRACKET);
+            case '+', '-', '*', '/' -> new LiteralEntity(currentIndex, character.toString(), OPERATORS);
+            case '(' -> new LiteralEntity(currentIndex, character.toString(), OPEN_BRACKET);
+            case ')' -> new LiteralEntity(currentIndex, character.toString(), CLOSE_BRACKET);
             default -> new LiteralEntity();
         };
     }
