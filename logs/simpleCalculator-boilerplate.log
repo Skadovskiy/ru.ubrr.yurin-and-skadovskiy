@@ -1,0 +1,40 @@
+2021-05-15 15:25:37.301 [main] INFO  ru.ubrr.calc.Calculator - 2
+2021-05-15 15:25:41.258 [main] INFO  ru.ubrr.calc.Calculator - 3
+2021-05-15 15:25:42.908 [main] INFO  ru.ubrr.calc.Calculator - 4
+2021-05-15 15:25:44.338 [main] INFO  ru.ubrr.calc.Calculator - 5
+2021-05-15 15:26:13.574 [main] INFO  ru.ubrr.calc.Calculator - 1
+2021-05-15 15:26:15.177 [main] INFO  ru.ubrr.calc.Calculator - 2
+2021-05-15 15:26:17.482 [main] INFO  ru.ubrr.calc.Calculator - qwewqe
+2021-05-15 15:26:18.888 [main] INFO  ru.ubrr.calc.Calculator - wqeqwe
+2021-05-15 16:06:08.785 [main] INFO  ru.ubrr.calc.Calculator - 1+2
+2021-05-15 16:08:28.703 [main] INFO  ru.ubrr.calc.Calculator - 1+2
+2021-05-15 17:08:32.749 [main] INFO  ru.ubrr.calc.Calculator - Длина пустой строки = 0
+2021-05-15 17:08:38.950 [main] INFO  ru.ubrr.calc.Calculator - 1
+2021-05-15 17:28:02.446 [main] INFO  ru.ubrr.calc.Calculator - LiteralEntity{value='1', type=NUMBERS}
+2021-05-15 17:28:02.448 [main] INFO  ru.ubrr.calc.Calculator - LiteralEntity{value='+', type=OPERATORS}
+2021-05-15 17:28:02.448 [main] INFO  ru.ubrr.calc.Calculator - LiteralEntity{value='2', type=NUMBERS}
+2021-05-15 17:28:12.130 [main] INFO  ru.ubrr.calc.Calculator - LiteralEntity{value='(', type=BRACKETS}
+2021-05-15 17:28:12.130 [main] INFO  ru.ubrr.calc.Calculator - LiteralEntity{value='1', type=NUMBERS}
+2021-05-15 17:28:12.130 [main] INFO  ru.ubrr.calc.Calculator - LiteralEntity{value='+', type=OPERATORS}
+2021-05-15 17:28:12.130 [main] INFO  ru.ubrr.calc.Calculator - LiteralEntity{value='2', type=NUMBERS}
+2021-05-15 17:28:12.131 [main] INFO  ru.ubrr.calc.Calculator - LiteralEntity{value=')', type=BRACKETS}
+2021-05-15 17:28:31.569 [main] INFO  ru.ubrr.calc.Calculator - LiteralEntity{value='-40', type=NUMBERS}
+2021-05-15 17:28:31.569 [main] INFO  ru.ubrr.calc.Calculator - LiteralEntity{value='+', type=OPERATORS}
+2021-05-15 17:28:31.569 [main] INFO  ru.ubrr.calc.Calculator - LiteralEntity{value='(', type=BRACKETS}
+2021-05-15 17:28:31.570 [main] INFO  ru.ubrr.calc.Calculator - LiteralEntity{value='4', type=NUMBERS}
+2021-05-15 17:28:31.570 [main] INFO  ru.ubrr.calc.Calculator - LiteralEntity{value='*', type=OPERATORS}
+2021-05-15 17:28:31.570 [main] INFO  ru.ubrr.calc.Calculator - LiteralEntity{value='3', type=NUMBERS}
+2021-05-15 17:28:31.570 [main] INFO  ru.ubrr.calc.Calculator - LiteralEntity{value='/', type=OPERATORS}
+2021-05-15 17:28:31.570 [main] INFO  ru.ubrr.calc.Calculator - LiteralEntity{value='7', type=NUMBERS}
+2021-05-15 17:28:31.571 [main] INFO  ru.ubrr.calc.Calculator - LiteralEntity{value=')', type=BRACKETS}
+2021-05-15 17:28:31.571 [main] INFO  ru.ubrr.calc.Calculator - LiteralEntity{value='-', type=OPERATORS}
+2021-05-15 17:28:31.571 [main] INFO  ru.ubrr.calc.Calculator - LiteralEntity{value='404', type=NUMBERS}
+2021-05-15 19:53:17.636 [main] INFO  ru.ubrr.calc.Calculator - Ответ: 3.0
+2021-05-15 19:53:36.675 [main] INFO  ru.ubrr.calc.Calculator - Ответ: 1.0
+2021-05-15 19:54:53.154 [main] INFO  ru.ubrr.calc.Calculator - Ответ: -1.0
+2021-05-15 19:57:49.513 [main] INFO  ru.ubrr.calc.Calculator - Ответ: -3.0
+2021-05-15 19:57:53.755 [main] INFO  ru.ubrr.calc.Calculator - Ответ: 42.0
+2021-05-15 19:58:00.196 [main] INFO  ru.ubrr.calc.Calculator - Ответ: 347.0
+2021-05-15 19:58:05.318 [main] INFO  ru.ubrr.calc.Calculator - Ответ: 1
+2021-05-15 19:58:16.601 [main] INFO  ru.ubrr.calc.Calculator - Ответ: 555
+2021-05-15 19:59:57.324 [main] INFO  ru.ubrr.calc.Calculator - Ответ: 60
