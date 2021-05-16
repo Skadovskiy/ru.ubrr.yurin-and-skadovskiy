@@ -1,13 +1,12 @@
 package ru.ubrr.calc;
 
 import java.util.Iterator;
-import java.util.function.Consumer;
 
 import static ru.ubrr.calc.LiteralType.*;
 
 public class StringIterator implements Iterator<LiteralEntity> {
 
-    private String string;
+    private final String string;
 
     private Integer currentIndex;
 
@@ -21,9 +20,13 @@ public class StringIterator implements Iterator<LiteralEntity> {
         return string != null && currentIndex < string.length();
     }
 
+    /**
+     * @return сущность LiteralEntity
+     */
     @Override
     public LiteralEntity next() {
-        StringBuilder result = new StringBuilder();
+        LiteralEntity res = null;
+        var result = new StringBuilder();
         Character character = string.charAt(currentIndex);
 
         while (Character.isDigit(character) || character == '.' || (currentIndex == 0 && character == '-') ||
@@ -32,21 +35,28 @@ public class StringIterator implements Iterator<LiteralEntity> {
             result.append(character);
             currentIndex++;
 
-            if (currentIndex == string.length())
-                return new LiteralEntity(currentIndex, result.toString(), NUMBERS);
+            if (currentIndex == string.length()) {
+                res = new LiteralEntity(currentIndex, result.toString(), NUMBERS);
+                break;
+            }
 
             character = string.charAt(currentIndex);
         }
+        if (res == null) {
+            if (result.length() != 0) {
+                res = new LiteralEntity(currentIndex, result.toString(), NUMBERS);
+            } else {
+                currentIndex++;
+                res = switch (character) {
+                    case '+', '-', '*', '/' -> new LiteralEntity(currentIndex, character.toString(), OPERATORS);
+                    case '(' -> new LiteralEntity(currentIndex, character.toString(), OPEN_BRACKET);
+                    case ')' -> new LiteralEntity(currentIndex, character.toString(), CLOSE_BRACKET);
+                    default -> new LiteralEntity();
+                };
+            }
 
-        if (result.length() != 0)
-            return new LiteralEntity(currentIndex, result.toString(), NUMBERS);
+        }
 
-        currentIndex++;
-        return switch (character) {
-            case '+', '-', '*', '/' -> new LiteralEntity(currentIndex, character.toString(), OPERATORS);
-            case '(' -> new LiteralEntity(currentIndex, character.toString(), OPEN_BRACKET);
-            case ')' -> new LiteralEntity(currentIndex, character.toString(), CLOSE_BRACKET);
-            default -> new LiteralEntity();
-        };
+        return res;
     }
 }

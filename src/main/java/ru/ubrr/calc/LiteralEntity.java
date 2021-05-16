@@ -16,19 +16,4 @@ public class LiteralEntity {
     private LiteralType type;
 
     public LiteralEntity(){}
-
-//    @Override
-//    public String toString() {
-//        return "LiteralEntity{" +
-//                "value='" + value + '\'' +
-//                ", type=" + type +
-//                '}';
-//    }
-
-//    public LiteralEntity(int id, String value, LiteralType type) {
-//        this.id = id;
-//        this.value = value;
-//        this.type = type;
-//    }
-
 }
