@@ -5,15 +5,7 @@ import java.util.Map;
 
 public class PriorityOperators {
 
-    private Map<String, Integer> map;
-
-    PriorityOperators(Map<String, Integer> map){
-        this.map = map;
-    }
-
-    PriorityOperators(){
-        map = new HashMap<String, Integer>();
-    }
+    private final Map<String, Integer> map = new HashMap<>();
 
     public Integer getPriority(String key){
         return map.get(key);
