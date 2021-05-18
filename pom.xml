@@ -21,7 +21,10 @@
         <maven.compiler.fork>true</maven.compiler.fork>
         <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
         <lombok.version>1.18.20</lombok.version>
+<<<<<<< HEAD
         <assertj-core.version>3.16.1</assertj-core.version>
+=======
+>>>>>>> ad47e63076cb6373b8e200881580a538064869e8
     </properties>
 
     <dependencyManagement>
