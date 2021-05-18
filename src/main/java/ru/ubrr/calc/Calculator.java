@@ -18,6 +18,8 @@ public class Calculator {
         priorityOperators.putPriority("-", 1);
         priorityOperators.putPriority("*", 2);
         priorityOperators.putPriority("/", 2);
+        priorityOperators.putPriority("^", 3);
+        priorityOperators.putPriority("!", 4);
     }
 
     public static void main(String... args) {
@@ -37,6 +39,8 @@ public class Calculator {
             case "-" -> Double.valueOf(first.getValue()) - Double.valueOf(second.getValue());
             case "*" -> Double.valueOf(first.getValue()) * Double.valueOf(second.getValue());
             case "/" -> Double.valueOf(first.getValue()) / Double.valueOf(second.getValue());
+            case "^" -> Math.pow(Double.valueOf(first.getValue()), Double.valueOf(second.getValue()));
+            case "!" -> Math.exp(Double.valueOf(first.getValue()));
             default -> 0d;
         }), NUMBERS);
     }
@@ -81,7 +85,12 @@ public class Calculator {
         while (deque.size() > 1) {
             LiteralEntity firstNumber = deque.poll();
             LiteralEntity firstOperator = deque.poll();
-            LiteralEntity secondNumber = deque.poll();
+            LiteralEntity secondNumber = new LiteralEntity();
+
+            if (!firstOperator
+                    .getValue()
+                    .equals("!"))
+                secondNumber = deque.poll();
 
             if (!deque.isEmpty() && priorityOperators.getPriority(Objects.requireNonNull(firstOperator).getValue()) <
                     priorityOperators.getPriority(Objects.requireNonNull(deque.peek()).getValue())) {

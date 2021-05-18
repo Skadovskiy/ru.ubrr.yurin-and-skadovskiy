@@ -49,7 +49,7 @@ public class StringIterator implements Iterator<LiteralEntity> {
             } else {
                 currentIndex++;
                 res = switch (character) {
-                    case '+', '-', '*', '/' -> new LiteralEntity(currentIndex, character.toString(), OPERATORS);
+                    case '+', '-', '*', '/', '^', '!' -> new LiteralEntity(currentIndex, character.toString(), OPERATORS);
                     case '(' -> new LiteralEntity(currentIndex, character.toString(), OPEN_BRACKET);
                     case ')' -> new LiteralEntity(currentIndex, character.toString(), CLOSE_BRACKET);
                     default -> new LiteralEntity();
