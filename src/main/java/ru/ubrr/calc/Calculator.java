@@ -7,6 +7,8 @@ import java.util.Deque;
 import java.util.Objects;
 import java.util.Scanner;
 
+import static ru.ubrr.calc.LiteralType.*;
+
 public class Calculator {
     private static final Logger log = org.slf4j.LoggerFactory.getLogger(Calculator.class);
     private static PriorityOperators priorityOperators = new PriorityOperators();
@@ -36,7 +38,7 @@ public class Calculator {
             case "*" -> Double.valueOf(first.getValue()) * Double.valueOf(second.getValue());
             case "/" -> Double.valueOf(first.getValue()) / Double.valueOf(second.getValue());
             default -> 0d;
-        }), LiteralType.NUMBERS);
+        }), NUMBERS);
     }
 
     public String calc(String string) {
@@ -58,7 +60,7 @@ public class Calculator {
 
         brackets.addAll(literalEntity.nextBrackets());
 
-        while (!brackets.isEmpty() && brackets.getLiteralEntityList().stream().anyMatch((p) -> p.getType() == LiteralType.OPEN_BRACKET)) {
+        while (!brackets.isEmpty() && brackets.getLiteralEntityList().stream().anyMatch((p) -> p.getType() == OPEN_BRACKET)) {
             int first = literalEntity.indexOf(brackets.getFirstElement());
 
             literalEntity.removeAll(brackets);

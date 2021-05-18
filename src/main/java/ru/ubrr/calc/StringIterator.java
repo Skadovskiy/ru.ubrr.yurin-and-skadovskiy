@@ -37,6 +37,7 @@ public class StringIterator implements Iterator<LiteralEntity> {
 
             if (currentIndex == string.length()) {
                 res = new LiteralEntity(currentIndex, result.toString(), NUMBERS);
+
                 break;
             }
 
